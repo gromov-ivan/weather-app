@@ -22,18 +22,19 @@ function mainTable() {
     const title = document.getElementById('title');
     title.innerHTML = "Main Page"
     let description = document.getElementById('description');
-    description.innerHTML = 'The data below is derived from the weather API,' +
-        '<br> provided by Tampere University of Applied Sciences.';
+    description.innerHTML = 'The data below is obtained from the weather station' +
+        '<br> of Tampere University of Applied Sciences.' +
+        '<br> <br> The latest data:';
 
     let tableSpan = document.getElementById("table");
-    let html = `<table id="mainTable"> 
-                      <tr> 
+    let html = `<table id="mainTable">
+                      <tr>
                         <th>№</th>
                         <th>Time</th>
                         <th>Date</th>
                         <th>Type</th>
                         <th>Value</th>
-                      </tr>                
+                      </tr>
     `;
 
     let data = JSON.parse(get("", ""));
@@ -45,8 +46,8 @@ function mainTable() {
       const time = period[1];
       const type = Object.keys(element.data)[0];
       const value = element.data[type];
-    
-      html += `<tr> 
+
+      html += `<tr>
                 <td>${i+1 + "."}</td>
                 <td>${time}</td>
                 <td>${date}</td>
@@ -70,7 +71,7 @@ function mainTable() {
       menu = document.createElement("select");
       menu.setAttribute("id", "timeMenu");
     }
-  
+
     let menu1 = document.getElementById("typeMenu");
     if (menu1) {
       menu1.remove();
@@ -85,30 +86,30 @@ function otherTable(name, period, type) {
 
   let tableSpan = document.getElementById("table");
 
-  let html = `<table id="otherTable"> 
-                    <tr> 
+  let html = `<table id="otherTable">
+                    <tr>
                       <th>№</th>
                       <th>Time</th>
                       <th>Date</th>
                       <th>Value</th>
-                    </tr>                
+                    </tr>
   `;
 
   let data = JSON.parse(get(name, period));
-  
+
   let title = document.getElementById('title');
   let description = document.getElementById('description');
-  description.innerHTML = 'The data below is derived from the weather API,' +
-      '<br> provided by Tampere University of Applied Sciences.';
+  description.innerHTML = 'The data below is obtained from the weather station' +
+  '<br> of Tampere University of Applied Sciences.';
 
-  
+
   if (name === "temperature") {
     title.innerHTML = "Temperature Measurements";
   }
   else if (name === "wind_speed") {
     title.innerHTML = "Wind Speed";
   }
-    
+
   for (let i = 0; i < data.length; i++) {
       const element = data[i];
       const period = element.date_time.replace("Z", "T").split("T");
@@ -116,7 +117,7 @@ function otherTable(name, period, type) {
       const time = period[1];
       const value = element[name];
 
-        html += `<tr> 
+        html += `<tr>
         <td>${i+1 + "."}</td>
         <td>${time}</td>
         <td>${date}</td>
@@ -177,7 +178,7 @@ function drawChart(data, name, type) {
     ctx.remove();
     canvas = document.createElement("canvas");
     canvas.setAttribute("id", "canvas");
-  }  
+  }
 
   let labels = [];
   let values = [];
@@ -212,8 +213,8 @@ function drawChart(data, name, type) {
                 'rgba(255, 218, 185, 1)'
             ],
             borderWidth: 1
-        }, 
-        ] 
+        },
+        ]
     },
 });
 
@@ -223,7 +224,7 @@ function drawChart(data, name, type) {
 }
 
 
-function timeMenu(val, free) {  
+function timeMenu(val, free) {
   let span = document.getElementById("menu");
 
   let menu = document.getElementById("timeMenu");
