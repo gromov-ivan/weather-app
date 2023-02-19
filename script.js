@@ -20,11 +20,11 @@ function get(source, period) {
 function mainTable() {
 
     const title = document.getElementById('title');
-    title.innerHTML = "Main Page"
+    title.innerHTML = "Home Page"
     let description = document.getElementById('description');
     description.innerHTML = 'The data below is obtained from the weather station' +
         '<br> of Tampere University of Applied Sciences.' +
-        '<br> <br> The latest data:';
+        '<br> <br> All the latest data:';
 
     let tableSpan = document.getElementById("table");
     let html = `<table id="mainTable">
@@ -48,7 +48,7 @@ function mainTable() {
       const value = element.data[type];
 
       html += `<tr>
-                <td>${i+1 + "."}</td>
+                <td>${i+1}</td>
                 <td>${time}</td>
                 <td>${date}</td>
                 <td>${type}</td>
@@ -102,13 +102,14 @@ function otherTable(name, period, type) {
   description.innerHTML = 'The data below is obtained from the weather station' +
   '<br> of Tampere University of Applied Sciences.';
 
-
   if (name === "temperature") {
     title.innerHTML = "Temperature Measurements";
   }
+  /* The wind speed data is irrelevant at the moment
   else if (name === "wind_speed") {
     title.innerHTML = "Wind Speed";
   }
+  */
 
   for (let i = 0; i < data.length; i++) {
       const element = data[i];
@@ -118,7 +119,7 @@ function otherTable(name, period, type) {
       const value = element[name];
 
         html += `<tr>
-        <td>${i+1 + "."}</td>
+        <td>${i+1}</td>
         <td>${time}</td>
         <td>${date}</td>
         <td>${value}</td>
@@ -141,8 +142,8 @@ function buttonInfo() {
   description.innerHTML = '';
 
   let info = document.getElementById('table')
-  info.innerHTML = 'Name: Ivan Gromov <br> Email: <a href="mailto:ivan.gromov@tuni.fi">ivan.gromov@tuni.fi</a>' +
-      '<br> Course: 5G00DM03-3005';
+  info.innerHTML = 'Created by: Ivan Gromov <br> Contact: <a href="mailto:ivan.grcmcv@gmail.com">ivan.grcmcv@gmail.com</a>' +
+      '';
 
   let ctx = document.getElementById("canvas");
   if (ctx) {
@@ -194,7 +195,7 @@ function drawChart(data, name, type) {
         labels: labels,
         datasets: [{
             type: type,
-            label: 'Data Chart',
+            label: "Weather Data",
             data: values,
             backgroundColor: [
                 'rgba(44, 74, 82, 0.7)',
@@ -237,7 +238,7 @@ function timeMenu(val, free) {
     menu.setAttribute("id", "timeMenu");
   }
 
-  html = `<option value="" onclick="createPage('', '${val}', ${free});"> Now </option>
+  html = `<option value="" onclick="createPage('', '${val}', ${free});"> Live </option>
   <option value="24" onclick="createPage('23', '${val}', ${free});"> 24 hours </option>
   <option value="48" onclick="createPage('47', '${val}', ${free});"> 48 hours </option>
   <option value="72" onclick="createPage('71', '${val}', ${free});"> 72 hours </option>
@@ -251,7 +252,7 @@ function timeMenu(val, free) {
 function measurementTypeMenu() {
 
   let title = document.getElementById('title');
-  title.innerHTML = 'Desired Data'
+  title.innerHTML = 'Data of your choice'
 
   const names = JSON.parse(get("names",""));
 
