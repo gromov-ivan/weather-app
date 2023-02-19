@@ -11,8 +11,8 @@ Some of the data:
 ## Preview
 <img
   src="imagies/temperature_page.jpg"
-  alt="Alt text"
-  title="Optional title"
+  alt="Temperature Page"
+  title="Temperature Page"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
   
  For the proper operation of the web page, it is recommended to use the Mozilla Firefox browser.
