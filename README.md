@@ -26,5 +26,5 @@ Some of the data:
 - http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_out
 - http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_in
 
-## Technologies used:
+## Technologies
 JavaScript, HTML, CSS
